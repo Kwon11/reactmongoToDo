@@ -3,9 +3,23 @@
   "version": "1.0.0",
   "description": "To Do application to practice React Mongodb",
   "main": "index.js",
+  "repository": "www.github.com/Kwon11/reactmongoToDo.git",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
   },
   "author": "Chan Kwon",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.1",
+    "webpack": "^2.2.1"
+  }
 }
