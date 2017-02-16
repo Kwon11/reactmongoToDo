@@ -5,12 +5,19 @@ html {
 .NavBar {
   background: linear-gradient(to left, #00cc00, #0066ff);
   padding: 15px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5%;
   text-align: center;
+  box-shadow: 10px 10px 5px black;
+  border-style: groove;
+  border-color: grey;
+  border-width: 5px;
 }
 #NavBarText {
   position: relative;
-  float: center;
   display: inline-block;
   color: #ff0000;
   font-size: 30px;
@@ -18,9 +25,10 @@ html {
                3px 3px 5px blue;
 }
 #AddButton {
-  position: relative;
-  float: right;
-  align-self: center;
+  position: fixed;
+  top: 3%;
+  left: 80%;
+  width: 15%;
   background-size: 20vw 15px;
   padding: 5px;
 }
@@ -31,8 +39,9 @@ html {
 }
 
 .UserProfile {
-  position: relative;
-  height: 40%;
+  position: fixed;
+  top: 12%;
+  height: 37%;
   width: 25%;
   text-align: center;
   font-size: 20px;
@@ -40,21 +49,24 @@ html {
   padding: 10px;
   display: inline-block;
   margin: 10px;
+  box-shadow: 10px 10px 5px black;
 }
 
 .SideIcon {
   margin: 10px;
-  position: relative;
-  display: block;
+  position: fixed;
+  top: 55%;
   justify-content: center;
   text-align: center;
   align-content: center;
   background: linear-gradient(to left, white, black);
   width: 25%;
-  height: 40%;
+  height: 37%;
   padding: 10px;
+  box-shadow: 10px 10px 5px black;
 }
 #SideButton {
+  position: relative;
   display: block;
   align-self: center;
   justify-content: center;
@@ -62,10 +74,46 @@ html {
 }
 .calendarPic {
   position: relative;
-  height: 100%;
+  height: 80%;
   width: 100%;
 }
 .CenterDisplay {
+  position: fixed;
+  left: 30%;
+  top: 12%;
+  width: 65%;
+  height: 80%;
+  padding: 10px;
+  background: linear-gradient(to left, white, #606363);
+  margin: 10px;
+  box-shadow: 10px 10px 5px black;
+  border-style: groove;
+  border-color: white;
+}
+.Task {
   position: relative;
-  display: inline-block;
+  display: block;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  margin: 5px;
+  padding: 10px;
+}
+.taskName{
+  margin: 2px;
+  padding: 2px;
+  background: linear-gradient(to right, white, black);
+}
+.taskDescription {
+  margin: 2px;
+  padding: 2px;
+  background: linear-gradient(to right, white, black);
+}
+.taskTime {
+  margin: 2px;
+  padding: 2px;
+  background: linear-gradient(to right, white, black);
+}
+.ToDoTitle {
+  text-align: center;
 }
