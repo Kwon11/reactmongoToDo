@@ -1,3 +1,7 @@
+html {
+  background: linear-gradient(to left, #3C8299, #44484A);
+}
+
 .NavBar {
   background: linear-gradient(to left, #00cc00, #0066ff);
   padding: 15px;
