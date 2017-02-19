@@ -3,6 +3,18 @@ html {
   font-family: tahoma;
 }
 
+.TaskField {
+  text-align: left;
+  display: block;
+  width: 30%;
+}
+
+.TaskFieldValue {
+  position: relative;
+  display: block;
+  float:right;
+}
+
 .App {
   position: relative;
   width: 100vw;

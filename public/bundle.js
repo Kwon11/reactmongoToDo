@@ -9591,24 +9591,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var React = __webpack_require__(9);
-var Task = __webpack_require__(90);
-var AddButton = __webpack_require__(53);
 var AddTaskForm = __webpack_require__(88);
+var ToDoList = __webpack_require__(188);
 //Main Agenda Component
-
-var fakeData = [{
-  taskName: 'Laundry',
-  description: 'Do the fucking laundry',
-  time: '2012-04-23T18:25:43.511Z'
-}, {
-  taskName: 'Bills',
-  description: 'Got bills to pay son',
-  time: '2012-04-23T18:30:43.511Z'
-}, {
-  taskName: 'Overthrow ISIS',
-  description: 'Freedom bitch',
-  time: '2012-04-23T18:50:43.511Z'
-}];
 
 var CenterDisplay = function (_React$Component) {
   _inherits(CenterDisplay, _React$Component);
@@ -9619,16 +9604,16 @@ var CenterDisplay = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (CenterDisplay.__proto__ || Object.getPrototypeOf(CenterDisplay)).call(this, props));
 
     _this.state = {
-      now: true
+      now: false
     };
-    _this.handleClick = _this.handleClick.bind(_this);
+    _this.onClickChange = _this.onClickChange.bind(_this);
     return _this;
   }
 
   _createClass(CenterDisplay, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
-      console.log('it does call this handleCLick');
+    key: 'onClickChange',
+    value: function onClickChange(event) {
+      console.log('it does call this onClickChange');
       this.setState(function (previousState) {
         return { now: !previousState.now };
       });
@@ -9640,25 +9625,13 @@ var CenterDisplay = function (_React$Component) {
         return React.createElement(
           'div',
           { className: 'CenterDisplay' },
-          React.createElement(
-            'div',
-            { className: 'ToDoTitle' },
-            ' AGENDA '
-          ),
-          React.createElement(AddButton, { onClick: this.handleClick }),
-          React.createElement(
-            'ul',
-            null,
-            fakeData.map(function (task, index) {
-              return React.createElement(Task, { data: task, key: index });
-            })
-          )
+          React.createElement(ToDoList, { onClick: this.onClickChange })
         );
       } else {
         return React.createElement(
           'div',
           { className: 'CenterDisplay' },
-          React.createElement(AddTaskForm, { onClick: this.handleClick })
+          React.createElement(AddTaskForm, { onClick: this.onClickChange })
         );
       }
     }
@@ -9848,6 +9821,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = __webpack_require__(9);
 var BackButton = __webpack_require__(89);
+var TaskField = __webpack_require__(189);
 
 var AddTaskForm = function (_React$Component) {
   _inherits(AddTaskForm, _React$Component);
@@ -9858,22 +9832,36 @@ var AddTaskForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (AddTaskForm.__proto__ || Object.getPrototypeOf(AddTaskForm)).call(this, props));
 
     _this.state = {
-      value: 'whatever bitch'
+      taskName: '',
+      description: '',
+      dueDate: ''
     };
-    _this.onChange = _this.onChange.bind(_this);
+    _this.onChangeTaskName = _this.onChangeTaskName.bind(_this);
+    _this.onChangeDescription = _this.onChangeDescription.bind(_this);
+    _this.onChangeDueDate = _this.onChangeDueDate.bind(_this);
     return _this;
   }
 
   _createClass(AddTaskForm, [{
+    key: 'onChangeTaskName',
+    value: function onChangeTaskName(event) {
+      this.setState({ taskName: event.target.value });
+    }
+  }, {
+    key: 'onChangeDescription',
+    value: function onChangeDescription(event) {
+      this.setState({ description: event.target.value });
+    }
+  }, {
+    key: 'onChangeDueDate',
+    value: function onChangeDueDate(event) {
+      this.setState({ dueDate: event.target.value });
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
       event.preventDefault();
-      console.log('whatever dude');
-    }
-  }, {
-    key: 'onChange',
-    value: function onChange(event) {
-      this.setState({ value: event.target.value });
+      console.log('submitting your task');
     }
   }, {
     key: 'render',
@@ -9881,18 +9869,11 @@ var AddTaskForm = function (_React$Component) {
       return React.createElement(
         'div',
         null,
-        React.createElement(
-          'form',
-          { onSubmit: this.handleSubmit },
-          React.createElement(
-            'label',
-            null,
-            'Name:',
-            React.createElement('input', { type: 'text', value: this.state.value, onChange: this.onChange })
-          ),
-          React.createElement('input', { type: 'submit', value: 'Submit', onSubmit: this.handleSubmit })
-        ),
-        React.createElement(BackButton, { onClick: this.props.onClick })
+        React.createElement(TaskField, { value: 'Task Name:', onChange: this.onChangeTaskName }),
+        React.createElement(TaskField, { value: 'Description:', onChange: this.onChangeDescription }),
+        React.createElement(TaskField, { value: 'Due Date:', onChange: this.onChangeDueDate }),
+        React.createElement(BackButton, { onClick: this.props.onClick }),
+        React.createElement('input', { type: 'submit', onSubmit: this.handleSubmit })
       );
     }
   }]);
@@ -22295,6 +22276,124 @@ var Main = function (_React$Component) {
 ;
 
 ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(9);
+var AddButton = __webpack_require__(53);
+var Task = __webpack_require__(90);
+
+var fakeData = [{
+  taskName: 'Laundry',
+  description: 'Do the fucking laundry',
+  time: '2012-04-23T18:25:43.511Z'
+}, {
+  taskName: 'Bills',
+  description: 'Got bills to pay son',
+  time: '2012-04-23T18:30:43.511Z'
+}, {
+  taskName: 'Overthrow ISIS',
+  description: 'Freedom bitch',
+  time: '2012-04-23T18:50:43.511Z'
+}];
+
+var ToDoList = function (_React$Component) {
+  _inherits(ToDoList, _React$Component);
+
+  function ToDoList(props) {
+    _classCallCheck(this, ToDoList);
+
+    return _possibleConstructorReturn(this, (ToDoList.__proto__ || Object.getPrototypeOf(ToDoList)).call(this, props));
+  }
+
+  _createClass(ToDoList, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'div',
+          { className: 'ToDoTitle' },
+          ' AGENDA '
+        ),
+        React.createElement(AddButton, { onClick: this.props.onClick }),
+        React.createElement(
+          'ul',
+          null,
+          fakeData.map(function (task, index) {
+            return React.createElement(Task, { data: task, key: index });
+          })
+        )
+      );
+    }
+  }]);
+
+  return ToDoList;
+}(React.Component);
+
+module.exports = ToDoList;
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(9);
+
+var TaskField = function (_React$Component) {
+  _inherits(TaskField, _React$Component);
+
+  function TaskField(props) {
+    _classCallCheck(this, TaskField);
+
+    var _this = _possibleConstructorReturn(this, (TaskField.__proto__ || Object.getPrototypeOf(TaskField)).call(this, props));
+
+    _this.state = {
+      value: _this.props.value
+    };
+    return _this;
+  }
+
+  _createClass(TaskField, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "form",
+        { className: "TaskField", onSubmit: this.handleSubmit },
+        this.state.value,
+        React.createElement("input", { className: "TaskFieldValue", type: "text", value: this.state.value, onChange: this.props.onChange })
+      );
+    }
+  }]);
+
+  return TaskField;
+}(React.Component);
+
+module.exports = TaskField;
 
 /***/ })
 /******/ ]);
