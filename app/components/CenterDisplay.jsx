@@ -27,16 +27,22 @@ class CenterDisplay extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      now: "Age1nda"
+      now: true
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick (event) {
+    console.log('it does call this handleCLick')
+    this.setState((previousState) => ({now: !previousState.now}));
   }
 
   render () {
-    if (this.state.now === "Agenda") {
+    if (this.state.now === true) {
       return (
         <div className="CenterDisplay">
           <div className="ToDoTitle"> AGENDA </div>
-          <AddButton />
+          <AddButton onClick={this.handleClick} />
           <ul>
             {fakeData.map((task, index) =>
               <Task data={task} key={index}/>
@@ -46,8 +52,10 @@ class CenterDisplay extends React.Component {
       );
     } else {
       return (
-        <AddTaskForm/>
-        )
+        <div className="CenterDisplay">
+          <AddTaskForm  onClick={this.handleClick}/>
+        </div>
+        );
     }
   };
 

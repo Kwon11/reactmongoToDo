@@ -11,7 +11,7 @@ class AddButton extends React.Component {
   // }
   render () {
     return (
-        <button id="AddButton">
+        <button id="AddButton" onClick={this.props.onClick}>
         Add A task you lazy shit
         </button>
       ); //clickhandlers here need e.preventDefault()

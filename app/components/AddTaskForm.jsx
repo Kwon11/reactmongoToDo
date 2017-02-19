@@ -22,15 +22,15 @@ class AddTaskForm extends React.Component {
 
   render () {
     return (
-        <div className="AddTaskForm">
-          <form className="CenterDisplay" onSubmit={this.handleSubmit}>
+        <div>
+          <form onSubmit={this.handleSubmit}>
           <label>
             Name:
             <input type="text" value={this.state.value} onChange={this.onChange} />
           </label>
           <input type="submit" value="Submit" onSubmit={this.handleSubmit}/>
           </form>
-          <BackButton/>
+          <BackButton onClick={this.props.onClick}/>
         </div>
       )
   }

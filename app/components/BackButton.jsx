@@ -8,7 +8,7 @@ class BackButton extends React.Component {
 
   render () {
     return (
-        <button className="test">
+        <button className="backButton" onClick={this.props.onClick}>
         Cancel like a quitter
         </button>
       )

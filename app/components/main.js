@@ -11,7 +11,7 @@ var CenterDisplay = require('./CenterDisplay.jsx');
 class Main extends React.Component{
   render () {
     return (
-      <div>
+      <div className="App">
         <ChanBar />
         <UserProfile />
         <CenterDisplay />
