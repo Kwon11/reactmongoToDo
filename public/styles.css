@@ -1,9 +1,16 @@
 html {
-  background: linear-gradient(to left, #3C8299, #44484A);
+  background-color: #ffffb3;
+  font-family: tahoma;
+}
+
+.test{
+  position: fixed;
+  top: 20%;
+  left: 70%;
 }
 
 .NavBar {
-  background: linear-gradient(to left, #00cc00, #0066ff);
+  background: linear-gradient(to left, #0066ff, white);
   padding: 15px;
   position: fixed;
   top: 0;
@@ -24,14 +31,6 @@ html {
   text-shadow: 1px 1px 1px #000,
                3px 3px 5px blue;
 }
-#AddButton {
-  position: fixed;
-  top: 3%;
-  left: 80%;
-  width: 15%;
-  background-size: 20vw 15px;
-  padding: 5px;
-}
 
 .profilePic{
   height: 100%;
@@ -45,11 +44,13 @@ html {
   width: 25%;
   text-align: center;
   font-size: 20px;
-  background: linear-gradient(to left, white, black);
+  background: linear-gradient(to left, #0066ff, white);
   padding: 10px;
   display: inline-block;
   margin: 10px;
   box-shadow: 10px 10px 5px black;
+  border-style: groove;
+  border-color: white;
 }
 
 .SideIcon {
@@ -59,11 +60,13 @@ html {
   justify-content: center;
   text-align: center;
   align-content: center;
-  background: linear-gradient(to left, white, black);
+  background: linear-gradient(to left, #0066ff, white);
   width: 25%;
   height: 37%;
   padding: 10px;
   box-shadow: 10px 10px 5px black;
+  border-style: groove;
+  border-color: white;
 }
 #SideButton {
   position: relative;
@@ -78,17 +81,17 @@ html {
   width: 100%;
 }
 .CenterDisplay {
-  position: fixed;
+  position: absolute;
   left: 30%;
   top: 12%;
   width: 65%;
   height: 80%;
   padding: 10px;
-  background: linear-gradient(to left, white, #606363);
   margin: 10px;
   box-shadow: 10px 10px 5px black;
   border-style: groove;
   border-color: white;
+  background: linear-gradient(to left, #0066ff, white);
 }
 .Task {
   position: relative;
@@ -96,24 +99,46 @@ html {
   border-width: 2px;
   border-color: black;
   border-style: solid;
-  margin: 5px;
+  margin: 10px;
   padding: 10px;
+  background-color: #ffffb3;
+  box-shadow: 10px 10px 5px black;
+  border-style: groove;
+  border-color: white;
 }
 .taskName{
   margin: 2px;
   padding: 2px;
-  background: linear-gradient(to right, white, black);
+  background:-color: blue;
 }
 .taskDescription {
   margin: 2px;
   padding: 2px;
-  background: linear-gradient(to right, white, black);
+  background:-color: blue;
 }
 .taskTime {
   margin: 2px;
   padding: 2px;
-  background: linear-gradient(to right, white, black);
+  background:-color: blue;
 }
 .ToDoTitle {
+  position: relative;
+  display: inline-block;
+  left: 40%;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 1px 1px 1px #000,
+               3px 3px 5px blue;
   text-align: center;
+  align-self: center;
+  font-size: 36px;
+}
+#AddButton {
+  position: relative;
+  display: inline-block;
+  top: 3%;
+  left: 43vw;
+  width: 10vw;
+  background-size: 20vw 15px;
+  padding: 0px;
 }

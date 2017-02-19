@@ -1,5 +1,7 @@
 var React = require('react');
-var Task = require('./Task.jsx')
+var Task = require('./Task.jsx');
+var AddButton = require('./AddButton.jsx');
+var AddTaskForm = require('./AddTaskForm.jsx');
 //Main Agenda Component
 
 var fakeData = [
@@ -22,17 +24,31 @@ var fakeData = [
 
 class CenterDisplay extends React.Component {
 
+  constructor (props) {
+    super(props);
+    this.state = {
+      now: "Age1nda"
+    }
+  }
+
   render () {
-    return (
-      <div className="CenterDisplay">
-        <div className="ToDoTitle"> AGENDA </div>
-        <ul>
-          {fakeData.map((task, index) =>
-            <Task data={task} key={index}/>
-          )}
-        </ul>
-      </div>
-    );
+    if (this.state.now === "Agenda") {
+      return (
+        <div className="CenterDisplay">
+          <div className="ToDoTitle"> AGENDA </div>
+          <AddButton />
+          <ul>
+            {fakeData.map((task, index) =>
+              <Task data={task} key={index}/>
+            )}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <AddTaskForm/>
+        )
+    }
   };
 
 };

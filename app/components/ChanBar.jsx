@@ -9,7 +9,6 @@ class ChanBar extends React.Component {
       <div id="NavBarText">
       Navigation bar bitch
       </div>
-      <AddButton />
       </div>
     );
   };

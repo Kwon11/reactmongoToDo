@@ -7,7 +7,6 @@ class SideIcon extends React.Component {
     return (
       <div className="SideIcon">
       <img src="calendar.png" className="calendarPic"></img>
-      Make this render whatever isn't the CenterDisplay
       <button id="SideButton"> Click for {this.props.current} </button>
       </div>
     );
